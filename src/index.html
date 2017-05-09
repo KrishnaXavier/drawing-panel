@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<meta charset="utf-8">
+	<title>Drawing Panel</title>	
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+	<script type="text/javascript" src="js/script.js"></script>	
+</head>
+<body>
+
+	<canvas class="mandala" id="canvas-mandala"></canvas>
+	<div class="panel" id="panel">
+
+		
+		<div class="slot-config">
+			<h2 class="title">Color: </h2>
+			<div class="slot-input">
+				<input type="color" id="color" onchange="color=this.value;" value="#af3030"/>			
+			</div>
+		</div>
+
+		<div class="slot-config">
+			<h2 class="title">Size: </h2>
+			<div class="slot-input">
+				<input type="number" min="1" id="size" onchange="traceSize=this.value;" value="1"/>
+			</div>
+		</div>
+
+		<div class="slot-config">
+			<h2 class="title">Amount: </h2>
+			<div class="slot-input">
+				<input type="number" min="1" id="amount" onchange="amount=this.value;" value="1"/>
+			</div>
+		</div>
+
+		<div class="slot-config">
+			<h2 class="title">Deg: </h2>
+			<div class="slot-input">
+				<input type="number" min="1" id="deg" onchange="deg=this.value;" value="3"/>
+			</div>
+		</div>
+
+	</div>
+
+
+</body>
+</html>
