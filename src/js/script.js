@@ -64,9 +64,7 @@ function render(){
 		
 		context.moveTo(coords.x[coords.x.length-2], coords.y[coords.y.length-2]+(spaceRow*i));			
 		context.lineTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]+(spaceRow*i));
-		context.stroke();
-		
-		
+		context.stroke();			
 	}	
 }
 
