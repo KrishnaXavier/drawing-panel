@@ -11,6 +11,10 @@
 
 	<canvas class="board" id="canvas-board"></canvas>	
 
+	<div class="menu" onclick="showPanelConfig()">
+		MENU
+	</div>
+
 	<div class="panel-config" id="panel-config" style="display: none">		
 		<div class="slot-config">
 			<h2 class="title">Color: </h2>
@@ -22,21 +26,21 @@
 		<div class="slot-config">
 			<h2 class="title">Size: </h2>
 			<div class="slot-input">
-				<input type="number" min="1" id="size" onchange="traceSize=this.value;" value="1"/>
+				<input type="number" min="1" id="size" onchange="traceSize=this.value;" value="3"/>
 			</div>
 		</div>
 
 		<div class="slot-config">
 			<h2 class="title">Amount: </h2>
 			<div class="slot-input">
-				<input type="number" min="1" id="amount" onchange="amount=this.value;" value="1"/>
+				<input type="number" min="1" id="amount" onchange="amount=this.value;" value="10"/>
 			</div>
 		</div>
 
 		<div class="slot-config">
 			<h2 class="title">Deg: </h2>
 			<div class="slot-input">
-				<input type="number" min="1" id="deg" onchange="deg=this.value;" value="3"/>
+				<input type="number" min="1" id="deg" onchange="deg=this.value;" value="6"/>
 			</div>
 		</div>
 

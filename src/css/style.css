@@ -35,9 +35,10 @@ hr {margin: 0;padding: 0;border: 0;color: #A26E13;background-color: #A26E13;heig
 }
 
 .panel-config{	
-	float: left;	
-	width: 40%;
-	margin-left: 10%;	
+	position: absolute;	
+    right: 0;	
+	width: 40%;	
+	margin-top: 50px;
 	padding: 1%;
 }
 
@@ -54,4 +55,14 @@ hr {margin: 0;padding: 0;border: 0;color: #A26E13;background-color: #A26E13;heig
 
 .panel-config .slot-input{
 	float: left;
+}
+
+.menu{	
+	padding: 10px;
+	position: absolute;	
+    right: 0;	
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 2.5em;
+	color: #505050;    
 }
