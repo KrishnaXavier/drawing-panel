@@ -34,12 +34,21 @@ hr {margin: 0;padding: 0;border: 0;color: #A26E13;background-color: #A26E13;heig
 	float: left;
 }
 
-.panel-config{	
+
+.container-panel{
 	position: absolute;	
     right: 0;	
-	width: 40%;	
-	margin-top: 50px;
+    width: 20%;
+}
+
+.panel-config{		
+	float: right;	
+	width: 100%;		
 	padding: 1%;
+}
+
+.panel-config input{
+	width: 100px;
 }
 
 .panel-config .slot-config{
@@ -57,10 +66,9 @@ hr {margin: 0;padding: 0;border: 0;color: #A26E13;background-color: #A26E13;heig
 	float: left;
 }
 
-.menu{	
-	padding: 10px;
-	position: absolute;	
-    right: 0;	
+.menu{
+	float: right;	
+    padding: 10px;
     text-decoration: none;
     cursor: pointer;
     font-size: 2.5em;
