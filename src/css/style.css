@@ -29,29 +29,29 @@ hr {margin: 0;padding: 0;border: 0;color: #A26E13;background-color: #A26E13;heig
 	box-sizing: border-box;
 }
 
-.mandala{	
+.board{	
 	background-color: #f0f0f0;	
 	float: left;
 }
 
-.panel{	
+.panel-config{	
 	float: left;	
 	width: 40%;
 	margin-left: 10%;	
 	padding: 1%;
 }
 
-.panel .slot-config{
+.panel-config .slot-config{
 	width: 100%;
 	float: left;
 	margin: 1%;
 }
 
-.panel .title{
+.panel-config .title{
 	font-size: 1.5em;
 	float: left;	
 }
 
-.panel .slot-input{
+.panel-config .slot-input{
 	float: left;
 }

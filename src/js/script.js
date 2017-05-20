@@ -1,24 +1,20 @@
-window.onload = function(){		
+window.onload = function(){			
 	init();
 
 }
 
 function init(){
-	board = document.getElementById("canvas-mandala");	
-	let widthClient = document.body.clientWidth;
-	let heightClient = window.innerHeight-10;
-	if(widthClient>heightClient)
-		board.width = board.height = heightClient;							
-	else
-		board.width = board.height = widthClient;					
-	
+	board = document.getElementById("canvas-board");	
+	let widthClient = board.width = document.documentElement.clientWidth;	
+	let heightClient = board.height = document.documentElement.clientHeight;
+
 	context = board.getContext("2d");
 	renderCentro();
 
 	color = "#af3030";
 	traceSize = 1;
-	amount = 1;
-	deg = 5;
+	amount = 1;	
+	spaceRow = 5;
 
 	context.beginPath();
 	context.lineWidth = traceSize;
@@ -62,12 +58,12 @@ function render(){
 	context.strokeStyle = color;
 	
 	for(var i=0; i<amount; i++){		
-		context.moveTo(coords.x[coords.x.length-2], coords.y[coords.y.length-2]-(deg*i));			
-		context.lineTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]-(deg*i));
+		context.moveTo(coords.x[coords.x.length-2], coords.y[coords.y.length-2]-(spaceRow*i));			
+		context.lineTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]-(spaceRow*i));
 		context.stroke();	
 		
-		context.moveTo(coords.x[coords.x.length-2], coords.y[coords.y.length-2]+(deg*i));			
-		context.lineTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]+(deg*i));
+		context.moveTo(coords.x[coords.x.length-2], coords.y[coords.y.length-2]+(spaceRow*i));			
+		context.lineTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]+(spaceRow*i));
 		context.stroke();
 		
 		
@@ -91,6 +87,14 @@ function renderCentro(){
 	context.moveTo(a, b-m);
 	context.lineTo(a, b+m);
 	context.stroke();	
+}
+
+function showPanelConfig(){
+	let element = document.getElementById("panel-config");
+	if(element.style.display == "block")
+		element.style.display = "none";
+	else
+		element.style.display = "block";
 }
 
 function c(t){console.log(t);}
