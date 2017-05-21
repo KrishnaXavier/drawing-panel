@@ -43,14 +43,14 @@ window.onload = function init(){
 			context.stroke();					
 
 			if(coords.x[coords.x.length-2] && coords.y[coords.y.length-2])
-				render(context);										
+			draw(context);										
 
 			context.moveTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]);		
 		}
 	}
 }
 
-function render(context){
+function draw(context){
 	context.beginPath();	
 	context.lineWidth = config.traceSize;
 	context.strokeStyle = config.color;
