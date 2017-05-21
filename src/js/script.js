@@ -1,3 +1,12 @@
+const config = {
+	color: "#af3030",
+	traceSize: 3,
+	amount: 10,
+	spaceRow: 6
+}
+
+window.config = config
+
 window.onload = function(){			
 	init();
 }
@@ -8,16 +17,11 @@ function init(){
 	let heightClient = board.height = document.documentElement.clientHeight;
 
 	const context = board.getContext("2d"); //da para deixar essa variavel local
-	renderCenter();
-
-	const color = "#af3030";
-	const traceSize = 3;
-	const amount = 10;	
-	const spaceRow = 6;
+	renderCenter(context, board);
 
 	context.beginPath();
-	context.lineWidth = traceSize;
-	context.strokeStyle = color;	
+	context.lineWidth = config.traceSize;
+	context.strokeStyle = config.color;	
 
 	let draw = false;
 
@@ -44,19 +48,19 @@ function init(){
 			context.stroke();					
 
 			if(coords.x[coords.x.length-2] && coords.y[coords.y.length-2])
-				render();										
+				render(context);										
 
 			context.moveTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]);		
 		}
 	}
 }
 
-function render(){
+function render(context){
 	context.beginPath();	
-	context.lineWidth = traceSize;
-	context.strokeStyle = color;
+	context.lineWidth = config.traceSize;
+	context.strokeStyle = config.color;
 	
-	for(var i=0; i<amount; i++){		
+	for(var i=0; i<config.amount; i++){		
 		context.moveTo(coords.x[coords.x.length-2], coords.y[coords.y.length-2]-(spaceRow*i));			
 		context.lineTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]-(spaceRow*i));
 		context.stroke();	
@@ -67,7 +71,7 @@ function render(){
 	}	
 }
 
-function renderCenter(){
+function renderCenter(context, board){
 	let a = board.width/2;
 	let b = board.height/2;
 
