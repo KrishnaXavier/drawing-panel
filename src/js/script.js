@@ -22,31 +22,37 @@ window.onload = function init(){
 
 	const coords = {"x":[], "y":[]};
 
-	board.onmousedown = function (evt) {
-		context.moveTo(evt.clientX, evt.clientY);		
-		coords.x[coords.x.length] = false;
-		coords.y[coords.y.length] = false;
-		draw = true;
-	}
+	board.onmousedown = onMouseDown
 
-	board.onmouseup = function(){
-		draw  = false;                
-	}
+	board.onmouseup = onMouseUp
 
-	board.onmousemove = function(evt){
-		if (draw){			
-			c("X coords: " + event.clientX + ", Y coords: " + event.clientY);	
-			coords.x[coords.x.length] = event.clientX;
-			coords.y[coords.y.length] = event.clientY;
+	board.onmousemove = onMouseMove
+}
 
-			context.lineTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]);
-			context.stroke();					
+function onMouseDown(evt) {
+	context.moveTo(evt.clientX, evt.clientY);		
+	coords.x[coords.x.length] = false;
+	coords.y[coords.y.length] = false;
+	draw = true;
+}
 
-			if(coords.x[coords.x.length-2] && coords.y[coords.y.length-2])
+function onMouseUp() {
+	draw  = false;                
+}
+
+function onMouseMove(evt) {
+	if (draw){			
+		c("X coords: " + event.clientX + ", Y coords: " + event.clientY);	
+		coords.x[coords.x.length] = event.clientX;
+		coords.y[coords.y.length] = event.clientY;
+
+		context.lineTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]);
+		context.stroke();					
+
+		if(coords.x[coords.x.length-2] && coords.y[coords.y.length-2])
 			draw(context);										
 
-			context.moveTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]);		
-		}
+		context.moveTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]);		
 	}
 }
 
