@@ -3,25 +3,25 @@ window.onload = function(){
 }
 
 function init(){
-	board = document.getElementById("canvas-board");	
+	const board = document.getElementById("canvas-board");	
 	let widthClient = board.width = document.documentElement.clientWidth;	
 	let heightClient = board.height = document.documentElement.clientHeight;
 
-	context = board.getContext("2d"); //da para deixar essa variavel local
+	const context = board.getContext("2d"); //da para deixar essa variavel local
 	renderCenter();
 
-	color = "#af3030";
-	traceSize = 3;
-	amount = 10;	
-	spaceRow = 6;
+	const color = "#af3030";
+	const traceSize = 3;
+	const amount = 10;	
+	const spaceRow = 6;
 
 	context.beginPath();
 	context.lineWidth = traceSize;
 	context.strokeStyle = color;	
 
-	draw = false;
+	let draw = false;
 
-	coords = {"x":[], "y":[]};
+	const coords = {"x":[], "y":[]};
 
 	board.onmousedown = function (evt) {
 		context.moveTo(evt.clientX, evt.clientY);		
