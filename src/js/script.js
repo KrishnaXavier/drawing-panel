@@ -6,12 +6,7 @@ const config = {
 }
 
 window.config = config
-
-window.onload = function(){			
-	init();
-}
-
-function init(){
+window.onload = function init(){
 	const board = document.getElementById("canvas-board");	
 	let widthClient = board.width = document.documentElement.clientWidth;	
 	let heightClient = board.height = document.documentElement.clientHeight;
