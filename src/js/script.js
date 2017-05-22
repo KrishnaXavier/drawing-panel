@@ -7,6 +7,9 @@ const config = {
 	coords: {x: [], y: []}
 }
 
+const board = document.getElementById('canvas-board')
+const configPanel = document.getElementById("panel-config")
+
 window.config = config
 window.onload = function init(){
 	const board = document.getElementById("canvas-board");	
@@ -89,11 +92,10 @@ function renderCenter(context, board){
 }
 
 function showPanelConfig(){
-	let element = document.getElementById("panel-config");
-	if(element.style.display == "block")
-		element.style.display = "none";
+	if(configPanel.style.display == "block")
+		configPanel.style.display = "none";
 	else
-		element.style.display = "block";
+		configPanel.style.display = "block";
 }
 
 function c(t){console.log(t);}
