@@ -32,9 +32,10 @@ function init(){
 	board.onmousemove = onMouseMove
 
 	function onMouseDown(evt) {
+		const {coords: {x, y}} = config
 		context.moveTo(evt.clientX, evt.clientY);		
-		config.coords.x[config.coords.x.length] = false;
-		config.coords.y[config.coords.y.length] = false;
+		x[x.length] = false;
+		y[y.length] = false;
 		config.drawing = true;
 	}
 
@@ -43,18 +44,20 @@ function init(){
 	}
 
 	function onMouseMove(evt) {
-		if (config.drawing){			
-			c("X coords: " + event.clientX + ", Y coords: " + event.clientY);	
-			config.coords.x[config.coords.x.length] = event.clientX;
-			config.coords.y[config.coords.y.length] = event.clientY;
+		const {drawing, coords: {x, y}} = config
 
-			context.lineTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]);
+		if (drawing){			
+			c("X coords: " + event.clientX + ", Y coords: " + event.clientY);	
+			x[x.length] = event.clientX;
+			y[y.length] = event.clientY;
+
+			context.lineTo(x[x.length-1], y[y.length-1]);
 			context.stroke();					
 
-			if(config.coords.x[config.coords.x.length-2] && config.coords.y[config.coords.y.length-2])
+			if(x[x.length-2] && y[y.length-2])
 				draw()
 
-			context.moveTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]);		
+			context.moveTo(x[x.length-1], y[y.length-1]);		
 		}
 	}
 
@@ -63,15 +66,15 @@ function init(){
 		context.lineWidth = config.traceSize;
 		context.strokeStyle = config.color;
 
-		const {spaceRow} = config
+		const {coords: {x, y}, spaceRow} = config
 		
 		for(var i=0; i<config.amount; i++){		
-			context.moveTo(config.coords.x[config.coords.x.length-2], config.coords.y[config.coords.y.length-2]-(spaceRow*i));			
-			context.lineTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]-(spaceRow*i));
+			context.moveTo(x[x.length-2], y[y.length-2]-(spaceRow*i));			
+			context.lineTo(x[x.length-1], y[y.length-1]-(spaceRow*i));
 			context.stroke();	
 			
-			context.moveTo(config.coords.x[config.coords.x.length-2], config.coords.y[config.coords.y.length-2]+(spaceRow*i));			
-			context.lineTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]+(spaceRow*i));
+			context.moveTo(x[x.length-2], y[y.length-2]+(spaceRow*i));			
+			context.lineTo(x[x.length-1], y[y.length-1]+(spaceRow*i));
 			context.stroke();			
 		}	
 	}
