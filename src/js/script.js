@@ -11,13 +11,15 @@ const board = document.getElementById('canvas-board')
 const configPanel = document.getElementById("panel-config")
 
 window.config = config
-window.onload = function init(){
-	const board = document.getElementById("canvas-board");	
+window.addEventListener('DOMContentLoaded', init)
+
+function init(){
 	let widthClient = board.width = document.documentElement.clientWidth;	
 	let heightClient = board.height = document.documentElement.clientHeight;
 
 	const context = board.getContext("2d"); //da para deixar essa variavel local
-	renderCenter(context, board);
+
+	renderCenter();
 
 	context.beginPath();
 	context.lineWidth = config.traceSize;
@@ -28,67 +30,72 @@ window.onload = function init(){
 	board.onmouseup = onMouseUp
 
 	board.onmousemove = onMouseMove
-}
 
-function onMouseDown(evt) {
-	context.moveTo(evt.clientX, evt.clientY);		
-	config.coords.x[config.coords.x.length] = false;
-	config.coords.y[config.coords.y.length] = false;
-	config.drawing = true;
-}
-
-function onMouseUp() {
-	config.drawing  = false;                
-}
-
-function onMouseMove(evt) {
-	if (config.drawing){			
-		c("X coords: " + event.clientX + ", Y coords: " + event.clientY);	
-		config.coords.x[config.coords.x.length] = event.clientX;
-		config.coords.y[config.coords.y.length] = event.clientY;
-
-		context.lineTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]);
-		context.stroke();					
-
-		if(config.coords.x[config.coords.x.length-2] && config.coords.y[config.coords.y.length-2])
-
-		context.moveTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]);		
+	function onMouseDown(evt) {
+		context.moveTo(evt.clientX, evt.clientY);		
+		config.coords.x[config.coords.x.length] = false;
+		config.coords.y[config.coords.y.length] = false;
+		config.drawing = true;
 	}
-}
 
-function draw(context){
-	context.beginPath();	
-	context.lineWidth = config.traceSize;
-	context.strokeStyle = config.color;
-	
-	for(var i=0; i<config.amount; i++){		
-		context.moveTo(config.coords.x[config.coords.x.length-2], config.coords.y[config.coords.y.length-2]-(spaceRow*i));			
-		context.lineTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]-(spaceRow*i));
-		context.stroke();	
+	function onMouseUp() {
+		config.drawing  = false;                
+	}
+
+	function onMouseMove(evt) {
+		if (config.drawing){			
+			c("X coords: " + event.clientX + ", Y coords: " + event.clientY);	
+			config.coords.x[config.coords.x.length] = event.clientX;
+			config.coords.y[config.coords.y.length] = event.clientY;
+
+			context.lineTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]);
+			context.stroke();					
+
+			if(config.coords.x[config.coords.x.length-2] && config.coords.y[config.coords.y.length-2])
+				draw()
+
+			context.moveTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]);		
+		}
+	}
+
+	function draw(){
+		context.beginPath();	
+		context.lineWidth = config.traceSize;
+		context.strokeStyle = config.color;
+
+		const {spaceRow} = config
 		
-		context.moveTo(config.coords.x[config.coords.x.length-2], config.coords.y[config.coords.y.length-2]+(spaceRow*i));			
-		context.lineTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]+(spaceRow*i));
-		context.stroke();			
-	}	
-}
+		for(var i=0; i<config.amount; i++){		
+			context.moveTo(config.coords.x[config.coords.x.length-2], config.coords.y[config.coords.y.length-2]-(spaceRow*i));			
+			context.lineTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]-(spaceRow*i));
+			context.stroke();	
+			
+			context.moveTo(config.coords.x[config.coords.x.length-2], config.coords.y[config.coords.y.length-2]+(spaceRow*i));			
+			context.lineTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]+(spaceRow*i));
+			context.stroke();			
+		}	
+	}
 
-function renderCenter(context, board){
-	let a = board.width/2;
-	let b = board.height/2;
+	function renderCenter(){
+		let a = board.width/2;
+		let b = board.height/2;
 
-	context.beginPath();
-	context.lineWidth = 1;
-	context.strokeStyle = '#444';
-	
-	let m = 5;
+		context.beginPath();
+		context.lineWidth = 1;
+		context.strokeStyle = '#444';
+		
+		let m = 5;
 
-	context.moveTo(a-m, b);
-	context.lineTo(a+m, b);
-	context.stroke();	
+		context.moveTo(a-m, b);
+		context.lineTo(a+m, b);
+		context.stroke();	
 
-	context.moveTo(a, b-m);
-	context.lineTo(a, b+m);
-	context.stroke();	
+		context.moveTo(a, b-m);
+		context.lineTo(a, b+m);
+		context.stroke();	
+	}
+
+	function c(t){console.log(t);}
 }
 
 function showPanelConfig(){
@@ -97,5 +104,3 @@ function showPanelConfig(){
 	else
 		configPanel.style.display = "block";
 }
-
-function c(t){console.log(t);}
