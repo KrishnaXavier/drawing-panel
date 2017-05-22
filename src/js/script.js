@@ -2,7 +2,9 @@ const config = {
 	color: "#af3030",
 	traceSize: 3,
 	amount: 10,
-	spaceRow: 6
+	spaceRow: 6,
+	drawing: false,
+	coords: {x: [], y: []}
 }
 
 window.config = config
@@ -18,10 +20,6 @@ window.onload = function init(){
 	context.lineWidth = config.traceSize;
 	context.strokeStyle = config.color;	
 
-	let draw = false;
-
-	const coords = {"x":[], "y":[]};
-
 	board.onmousedown = onMouseDown
 
 	board.onmouseup = onMouseUp
@@ -31,28 +29,27 @@ window.onload = function init(){
 
 function onMouseDown(evt) {
 	context.moveTo(evt.clientX, evt.clientY);		
-	coords.x[coords.x.length] = false;
-	coords.y[coords.y.length] = false;
-	draw = true;
+	config.coords.x[config.coords.x.length] = false;
+	config.coords.y[config.coords.y.length] = false;
+	config.drawing = true;
 }
 
 function onMouseUp() {
-	draw  = false;                
+	config.drawing  = false;                
 }
 
 function onMouseMove(evt) {
-	if (draw){			
+	if (config.drawing){			
 		c("X coords: " + event.clientX + ", Y coords: " + event.clientY);	
-		coords.x[coords.x.length] = event.clientX;
-		coords.y[coords.y.length] = event.clientY;
+		config.coords.x[config.coords.x.length] = event.clientX;
+		config.coords.y[config.coords.y.length] = event.clientY;
 
-		context.lineTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]);
+		context.lineTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]);
 		context.stroke();					
 
-		if(coords.x[coords.x.length-2] && coords.y[coords.y.length-2])
-			draw(context);										
+		if(config.coords.x[config.coords.x.length-2] && config.coords.y[config.coords.y.length-2])
 
-		context.moveTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]);		
+		context.moveTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]);		
 	}
 }
 
@@ -62,12 +59,12 @@ function draw(context){
 	context.strokeStyle = config.color;
 	
 	for(var i=0; i<config.amount; i++){		
-		context.moveTo(coords.x[coords.x.length-2], coords.y[coords.y.length-2]-(spaceRow*i));			
-		context.lineTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]-(spaceRow*i));
+		context.moveTo(config.coords.x[config.coords.x.length-2], config.coords.y[config.coords.y.length-2]-(spaceRow*i));			
+		context.lineTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]-(spaceRow*i));
 		context.stroke();	
 		
-		context.moveTo(coords.x[coords.x.length-2], coords.y[coords.y.length-2]+(spaceRow*i));			
-		context.lineTo(coords.x[coords.x.length-1], coords.y[coords.y.length-1]+(spaceRow*i));
+		context.moveTo(config.coords.x[config.coords.x.length-2], config.coords.y[config.coords.y.length-2]+(spaceRow*i));			
+		context.lineTo(config.coords.x[config.coords.x.length-1], config.coords.y[config.coords.y.length-1]+(spaceRow*i));
 		context.stroke();			
 	}	
 }
