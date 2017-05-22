@@ -10,7 +10,6 @@
 	<title>Drawing Panel</title>	
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
-	<script type="text/javascript" src="js/script.js"></script>	
 </head>
 <body>
 
@@ -26,28 +25,28 @@
 			<div class="slot-config">
 				<h2 class="title">Color: </h2>
 				<div class="slot-input">
-					<input type="color" id="color" onchange="color=this.value;" value="#af3030"/>			
+					<input type="color" id="color" onchange="config.color = this.value;" value="#af3030"/>			
 				</div>
 			</div>
 
 			<div class="slot-config">
 				<h2 class="title">Size: </h2>
 				<div class="slot-input">
-					<input type="number" min="1" id="size" onchange="traceSize=this.value;" value="3"/>
+					<input type="number" min="1" id="size" onchange="config.traceSize = this.value;" value="3"/>
 				</div>
 			</div>
 
 			<div class="slot-config">
 				<h2 class="title">Amount: </h2>
 				<div class="slot-input">
-					<input type="number" min="1" id="amount" onchange="amount=this.value;" value="10"/>
+					<input type="number" min="1" id="amount" onchange="config.amount = this.value;" value="10"/>
 				</div>
 			</div>
 
 			<div class="slot-config">
 				<h2 class="title">Space Row: </h2>
 				<div class="slot-input">
-					<input type="number" min="1" id="" onchange="spaceRow=this.value;" value="6"/>
+					<input type="number" min="1" id="" onchange="config.spaceRow = this.value;" value="6"/>
 				</div>
 			</div>
 		</div>
@@ -55,5 +54,6 @@
 	</div>
 
 
+	<script type="text/javascript" src="js/script.js"></script>	
 </body>
 </html>
