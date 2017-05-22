@@ -102,8 +102,7 @@ function init(){
 }
 
 function showPanelConfig(){
-	if(configPanel.style.display == "block")
-		configPanel.style.display = "none";
-	else
-		configPanel.style.display = "block";
+	configPanel.style.display = configPanel.style.display === "block"
+		? 'none'
+		: 'block'
 }
