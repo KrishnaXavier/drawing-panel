@@ -5,19 +5,18 @@
 
 <!DOCTYPE html>
 <html>
-<head>	
+<head>
 	<meta charset="utf-8">
-	<title>Drawing Panel</title>	
-	<link rel="stylesheet" href="css/style.css">
+	<title>Drawing Panel</title>
 	<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
 </head>
 <body>
 
-	<canvas class="board" id="canvas-board"></canvas>	
+	<canvas class="board" id="canvas-board"></canvas>
 
-	
+
 	<div class="container-panel">
-		<div class="menu" onclick="showPanelConfig()">
+		<div class="menu">
 			MENU
 		</div>
 
@@ -25,7 +24,7 @@
 			<div class="slot-config">
 				<h2 class="title">Color: </h2>
 				<div class="slot-input">
-					<input type="color" id="color" onchange="config.color = this.value;" value="#af3030"/>			
+					<input type="color" id="color" onchange="config.color = this.value;" value="#af3030"/>
 				</div>
 			</div>
 
@@ -52,8 +51,5 @@
 		</div>
 
 	</div>
-
-
-	<script type="text/javascript" src="js/script.js"></script>	
 </body>
 </html>

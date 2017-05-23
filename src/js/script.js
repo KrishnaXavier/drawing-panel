@@ -1,3 +1,5 @@
+import '../css/style.css'
+
 const config = {
 	color: "#af3030",
 	traceSize: 3,
@@ -9,9 +11,11 @@ const config = {
 
 const board = document.getElementById('canvas-board')
 const configPanel = document.getElementById("panel-config")
+const menu = document.querySelector('.menu')
 
 window.config = config
 window.addEventListener('DOMContentLoaded', init)
+menu.addEventListener('click', showPanelConfig)
 
 function init(){
 	let widthClient = board.width = document.documentElement.clientWidth;	
