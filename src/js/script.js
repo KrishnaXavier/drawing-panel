@@ -6,7 +6,6 @@ const configPanel = document.getElementById("panel-config")
 const menu = document.querySelector('.menu')
 const configurables = Array.from(document.querySelectorAll('.configurable'))
 
-window.config = config
 window.addEventListener('DOMContentLoaded', init)
 menu.addEventListener('click', showPanelConfig)
 configurables.map(configurable => configurable.addEventListener('change', configurationChange))
