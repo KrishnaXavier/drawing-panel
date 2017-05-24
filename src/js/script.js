@@ -1,13 +1,5 @@
 import '../css/style.css'
-
-const config = {
-	color: "#af3030",
-	traceSize: 3,
-	amount: 10,
-	spaceRow: 6,
-	drawing: false,
-	coords: {x: [], y: []}
-}
+import config from './config'
 
 const board = document.getElementById('canvas-board')
 const configPanel = document.getElementById("panel-config")
