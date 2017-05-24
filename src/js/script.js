@@ -1,21 +1,18 @@
-const config = {
-	color: "#af3030",
-	traceSize: 3,
-	amount: 10,
-	spaceRow: 6,
-	drawing: false,
-	coords: {x: [], y: []}
-}
+import '../css/style.css'
+import config from './config'
 
 const board = document.getElementById('canvas-board')
 const configPanel = document.getElementById("panel-config")
+const menu = document.querySelector('.menu')
+const configurables = Array.from(document.querySelectorAll('.configurable'))
 
-window.config = config
 window.addEventListener('DOMContentLoaded', init)
+menu.addEventListener('click', showPanelConfig)
+configurables.map(configurable => configurable.addEventListener('change', configurationChange))
 
 function init(){
-	let widthClient = board.width = document.documentElement.clientWidth;	
-	let heightClient = board.height = document.documentElement.clientHeight;
+	board.width = document.documentElement.clientWidth;	
+	board.height = document.documentElement.clientHeight;
 
 	const context = board.getContext("2d"); //da para deixar essa variavel local
 
@@ -99,6 +96,15 @@ function init(){
 	}
 
 	function c(t){console.log(t);}
+}
+
+function configurationChange({target: {attributes, value}}) {
+	const key = attributes.getNamedItem('data-key').value
+
+	if (!key || !Object.keys(config).includes(key))
+		return
+
+	config[key] = value
 }
 
 function showPanelConfig(){
