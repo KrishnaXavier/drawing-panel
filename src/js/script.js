@@ -44,7 +44,7 @@ function init(){
 		const {drawing, coords: {x, y}} = config
 
 		if (drawing){			
-			c("X coords: " + event.clientX + ", Y coords: " + event.clientY);	
+			//for dev: c("X coords: " + event.clientX + ", Y coords: " + event.clientY);	
 			x[x.length] = event.clientX;
 			y[y.length] = event.clientY;
 
