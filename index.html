@@ -1,0 +1,51 @@
+<!--
+	Dev: Krishna Xavier, tsixav@gmail.com
+	Source: https://github.com/KrishnaXavier/drawing-panel
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Drawing Panel</title>
+	<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+</head>
+<body>
+	<canvas class="board" id="canvas-board"></canvas>
+
+	<div class="container-panel">
+		<div class="menu">
+			MENU
+		</div>
+
+		<div class="panel-config" id="panel-config" style="display: none">
+			<div class="slot-config">
+				<h2 class="title">Color: </h2>
+				<div class="slot-input">
+					<input type="color" id="color" class="configurable" data-key="color" value="#af3030"/>
+				</div>
+			</div>
+
+			<div class="slot-config">
+				<h2 class="title">Size: </h2>
+				<div class="slot-input">
+					<input type="number" min="1" id="size" class="configurable" data-key="traceSize" value="3"/>
+				</div>
+			</div>
+
+			<div class="slot-config">
+				<h2 class="title">Amount: </h2>
+				<div class="slot-input">
+					<input type="number" min="1" id="amount" class="configurable" data-key="amount" value="10"/>
+				</div>
+			</div>
+
+			<div class="slot-config">
+				<h2 class="title">Space Row: </h2>
+				<div class="slot-input">
+					<input type="number" min="1" id="spaceRow" class="configurable" data-key="spaceRow" value="6"/>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="manifest.c38a1e94ad87cac2585e.js"></script><script type="text/javascript" src="bundle.7e417c47776e5e7b9eb0.js"></script></body>
+</html>
