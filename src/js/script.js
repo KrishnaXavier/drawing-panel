@@ -10,8 +10,8 @@ window.addEventListener('DOMContentLoaded', init)
 menu.addEventListener('click', showPanelConfig)
 
 function init(){
-	let widthClient = board.width = document.documentElement.clientWidth;	
-	let heightClient = board.height = document.documentElement.clientHeight;
+	board.width = document.documentElement.clientWidth;	
+	board.height = document.documentElement.clientHeight;
 
 	const context = board.getContext("2d"); //da para deixar essa variavel local
 
